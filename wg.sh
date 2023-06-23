@@ -43,7 +43,7 @@ checking_sc
 clear
 # ==================================================
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/Jengkolonline/wireguard/ipuk/wireguard"
+akbarvpn="raw.githubusercontent.com/Jengkolonline/wireguard/main"
 
 # Check OS version
 if [[ -e /etc/debian_version ]]; then
