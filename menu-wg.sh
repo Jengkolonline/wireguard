@@ -57,7 +57,7 @@ case $opt in
 2) clear ; renewwg ; exit ;;
 3) clear ; delwg ; exit ;;
 4) wget https://raw.githubusercontent.com/Jengkolonline/wireguard/main/wg.sh && chmod +x wg.sh && ./wg.sh ; exit ;;
-5) clear ; res ; exit ;;
+5) systemctl stop "wg-quick@wg0" ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
 *) echo "Anda salah tekan " ; sleep 1 ; menu-ssh ;;
