@@ -56,7 +56,7 @@ case $opt in
 1) clear ; addwg ; exit ;;
 2) clear ; renewwg ; exit ;;
 3) clear ; delwg ; exit ;;
-4) clear ; wg ; exit ;;
+4) wget https://raw.githubusercontent.com/Jengkolonline/wireguard/main/wg.sh && chmod +x wg.sh && ./wg.sh ; exit ;;
 5) clear ; res ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
