@@ -136,3 +136,4 @@ chmod +x delwg
 chmod +x renewwg
 cd
 rm -f /root/wg.sh
+reboot
