@@ -108,44 +108,45 @@ echo -e "\033[31m└────────────────────
 echo -e "\033[32m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\e[1;97m                     INFORMATION                \e[0m"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
-echo -e "                                                                                         "
+echo -e "\033[32m|"                                                                                         
 echo -e "\e[33m Operating System     \e[0m:  "`hostnamectl | grep "Operating System" | cut -d ' ' -f5-`	
 echo -e "\e[33m Total Amount Of RAM  \e[0m:  $tram MB"
 echo -e "\e[33m System Uptime        \e[0m:  $uptime "
 echo -e "\e[33m Isp Name             \e[0m:  $ISP"
 echo -e "\e[33m Domain               \e[0m:  $domain"	
 echo -e "\e[33m Ip Vps               \e[0m:  $IPVPS"	
+echo -e "\033[32m|"
 echo -e "\033[32m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\e[1;97m                        MENU                       \e[0m"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
-echo -e ""
+echo -e "\033[32m|"
 echo -e "\033[32m| [\e[36m•1\e[0m] SSH & OpenVPN Menu  [\e[36m•4\e[0m] Trojan Go Menu"
 echo -e "\033[32m| [\e[36m•2\e[0m] Vmess Menu          [\e[36m•5\e[0m] Trojan GFW Menu"
 echo -e "\033[32m| [\e[36m•3\e[0m] Vless Menu          [\e[36m•6\e[0m] Shadowsoks Menu"
-echo -e ""
+echo -e "\033[32m|"
 echo -e "\033[32m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\e[1;97m                 MENU SERVER TAMBAHAN                      \e[0m"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
-echo -e ""
-echo -e "\033[32m| [\e[36m•1\e[0m] L2TP Menu          [\e[36m•4\e[0m] SHADOWSOKS R Menu"
-echo -e "\033[32m| [\e[36m•2\e[0m] PPTP Menu          [\e[36m•5\e[0m] SHADOWSOKS-Libev Menu"
-echo -e "\033[32m| [\e[36m•3\e[0m] SSTP Menu          [\e[36m•6\e[0m] Buat Bot Telegram Store"
-echo -e ""
+echo -e "\033[32m|"
+echo -e "\033[32m| [\e[36m•7\e[0m] L2TP Menu          [\e[36m•10\e[0m] SHADOWSOKS R Menu"
+echo -e "\033[32m| [\e[36m•8\e[0m] PPTP Menu          [\e[36m•11\e[0m] SHADOWSOKS-Libev Menu"
+echo -e "\033[32m| [\e[36m•9\e[0m] SSTP Menu          [\e[36m•12\e[0m] Buat Bot Telegram Store"
+echo -e "\033[32m|"
 echo -e "\033[32m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\e[1;97m                        MENU                       \e[0m"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
-echo -e ""
-echo -e "\033[32m| [\e[36m•7\e[0m] Install UDP         [\e[36m•9\e[0m] Status Running"
-echo -e "\033[32m| [\e[36m•8\e[0m] SYSTEM Menu         [\e[36m•10\e[0m] Clear RAM Cache"
-echo -e ""
+echo -e "\033[32m|"
+echo -e "\033[32m| [\e[36m•13\e[0m] Install UDP         [\e[36m•15\e[0m] Status Running"
+echo -e "\033[32m| [\e[36m•14\e[0m] SYSTEM Menu         [\e[36m•16\e[0m] Clear RAM Cache"
+echo -e "\033[32m|"
 echo -e "\033[32m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\e[1;97m                    MASA AKTIF              \e[0m"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
-echo -e ""
+echo -e "\033[32m|"
 echo -e "\033[32m|   ${putih}Client Name${NC}   :  ${putih}$Name${NC}"
 echo -e "\033[32m|   ${putih}Exp Script${NC}    :  ${putih}$Exp${NC}"
 echo -e "\033[32m|   ${putih}Version${NC}       :  ${putih}2.1.2${NC}"
-echo -e ""
+echo -e "\033[32m|"
 echo -e "\033[32m└───────────────────────────────────────────────┘${NC}"
 echo -e ""
 echo -e   " Press x or [ Ctrl+C ] • To-Exit-Script"
@@ -160,9 +161,15 @@ case $opt in
 4) clear ; menu-trgo ;;
 5) clear ; menu-trojan ;;
 6) clear ; m-ssws ;;
-7) clear ; wget --load-cookies /tmp/cookies.txt ${UDPCORE} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
-8) clear ; menu-set ;;
-9) clear ; running ;;
-10) clear ; clearcache ;;
+7) clear ; menu-ssh ;;
+8) clear ; menu-vmess ;;
+9) clear ; menu-vless ;;
+10) clear ; menu-trgo ;;
+11) clear ; menu-trojan ;;
+12) clear ; m-ssws ;;
+13) clear ; wget --load-cookies /tmp/cookies.txt ${UDPCORE} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
+14) clear ; menu-set ;;
+15) clear ; running ;;
+16) clear ; clearcache ;;
 x) exit ;;
 esac
