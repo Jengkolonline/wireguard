@@ -160,7 +160,7 @@ case $opt in
 9) clear ; menu-sstp ;;
 10) clear ; menu-ssr ;;
 11) clear ; menu-ssl ;;
-12) clear ; m-ssws ;;
+12) clear ; menu-bot ;;
 13) clear ; wget --load-cookies /tmp/cookies.txt ${UDPCORE} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
 14) clear ; menu-set ;;
 15) clear ; running ;;
