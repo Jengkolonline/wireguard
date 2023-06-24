@@ -604,6 +604,10 @@ systemctl restart xray
 systemctl restart nginx
 systemctl enable runn
 systemctl restart runn
+systemctl stop trojan-go
+systemctl start trojan-go
+systemctl enable trojan-go
+systemctl restart trojan-go
 
 cd /usr/bin/
 # vmess
