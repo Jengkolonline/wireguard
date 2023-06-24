@@ -82,181 +82,319 @@ cat > /etc/xray/config.json << END
   "log" : {
     "access": "/var/log/xray/access.log",
     "error": "/var/log/xray/error.log",
-    "loglevel": "info"
+    "loglevel": "warning"
   },
   "inbounds": [
-      {
+    {
       "listen": "127.0.0.1",
-      "port": 10085,
+      "port": 10000,
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
-      },
+        },
       "tag": "api"
     },
-   {
-     "listen": "127.0.0.1",
-     "port": "14016",
-     "protocol": "vless",
-      "settings": {
-          "decryption":"none",
-            "clients": [
-               {
-                 "id": "${uuid}"                 
-#vless
-             }
-          ]
-       },
-       "streamSettings":{
-         "network": "ws",
-            "wsSettings": {
-                "path": "/vless"
-          }
-        }
-     },
-     {
-     "listen": "127.0.0.1",
-     "port": "23456",
-     "protocol": "vmess",
-      "settings": {
-            "clients": [
-               {
-                 "id": "${uuid}",
-                 "alterId": 0
-#vmess
-             }
-          ]
-       },
-       "streamSettings":{
-         "network": "ws",
-            "wsSettings": {
-                "path": "/vmess"
-          }
-        }
-     },
     {
       "listen": "127.0.0.1",
-      "port": "25432",
-      "protocol": "trojan",
+      "port": "10001",
+      "protocol": "vmess",
       "settings": {
-          "decryption":"none",		
-           "clients": [
-              {
-                 "password": "${uuid}"
-#trojanws
-              }
-          ],
-         "udp": true
-       },
-       "streamSettings":{
-           "network": "ws",
-           "wsSettings": {
-               "path": "/trojan-ws"
-            }
-         }
-     },
-    {
-         "listen": "127.0.0.1",
-        "port": "30300",
-        "protocol": "shadowsocks",
-        "settings": {
-           "clients": [
-           {
-           "method": "aes-128-gcm",
-          "password": "${uuid}"
-#ssws
-           }
-          ],
-          "network": "tcp,udp"
-       },
-       "streamSettings":{
-          "network": "ws",
-             "wsSettings": {
-               "path": "/ss-ws"
-           }
-        }
-     },	
-      {
-        "listen": "127.0.0.1",
-     "port": "24456",
-        "protocol": "vless",
-        "settings": {
-         "decryption":"none",
-           "clients": [
-             {
-               "id": "${uuid}"
-#vlessgrpc
-             }
-          ]
-       },
-          "streamSettings":{
-             "network": "grpc",
-             "grpcSettings": {
-                "serviceName": "vless-grpc"
-           }
-        }
-     },
-     {
-      "listen": "127.0.0.1",
-     "port": "31234",
-     "protocol": "vmess",
-      "settings": {
-            "clients": [
-               {
-                 "id": "${uuid}",
-                 "alterId": 0
-#vmessgrpc
-             }
-          ]
-       },
-       "streamSettings":{
-         "network": "grpc",
-            "grpcSettings": {
-                "serviceName": "vmess-grpc"
-          }
-        }
-     },
-     {
-        "listen": "127.0.0.1",
-     "port": "33456",
-        "protocol": "trojan",
-        "settings": {
-          "decryption":"none",
-             "clients": [
-               {
-                 "password": "${uuid}"
-#trojangrpc
-               }
-           ]
-        },
-         "streamSettings":{
-         "network": "grpc",
-           "grpcSettings": {
-               "serviceName": "trojan-grpc"
-         }
-      }
-   },
-   {
-    "listen": "127.0.0.1",
-    "port": "30310",
-    "protocol": "shadowsocks",
-    "settings": {
         "clients": [
           {
-             "method": "aes-128-gcm",
-             "password": "${uuid}"
-#ssgrpc
-           }
-         ],
-           "network": "tcp,udp"
-      },
-    "streamSettings":{
-     "network": "grpc",
-        "grpcSettings": {
-           "serviceName": "ss-grpc"
+            "id": "${uuid}",
+            "alterId": 0
+#vmess
           }
-       }
-    }	
+        ]
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10002",
+      "protocol": "vless",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+          {
+            "id": "${uuid}"
+#vless
+          }
+        ]
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vless",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10003",
+      "protocol": "trojan",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+          {
+            "password": "${uuid}"
+#trojan
+          }
+        ]
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/trojan",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10004",
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+            {
+              "method": "aes-256-gcm",
+              "password": "${uuid}"
+#shadowsocks
+            }
+          ],
+        "network": "tcp,udp"
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/shadowsocks",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10005",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "2022-blake3-aes-256-gcm",
+        "password": "UQ3w2q98BItd3DPgyctdoJw4cqQFmY59ppiDQdqMKbw=",
+        "clients": [
+          {
+            "password": "gv5gp9oyQmPB4mWnq+6LICXYfnFHyRUbCfcPIHb+PQY="
+#shadowsocks2022
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/shadowsocks2022",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "10006",
+      "protocol": "socks",
+      "settings": {
+        "auth": "password",
+        "accounts": [
+            {
+              "user": "private",
+              "pass": "server"
+#socks
+            }
+          ],
+        "udp": true,
+        "ip": "127.0.0.1"
+      },
+      "streamSettings":{
+        "network": "ws",
+        "wsSettings": {
+          "path": "/socks5",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20001",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "${uuid}",
+            "alterId": 0
+#vmess-grpc
+          }
+        ]
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "vmess-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20002",
+      "protocol": "vless",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+          {
+            "id": "${uuid}"
+#vless-grpc
+          }
+        ]
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "vless-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20003",
+      "protocol": "trojan",
+      "settings": {
+        "decryption":"none",
+        "clients": [
+          {
+            "password": "${uuid}"
+#trojan-grpc
+          }
+        ],
+        "udp": true
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "trojan-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20004",
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+            {
+              "method": "aes-256-gcm",
+              "password": "${uuid}"
+#shadowsocks-grpc
+            }
+          ],
+        "network": "tcp,udp"
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "shadowsocks-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20005",
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "2022-blake3-aes-256-gcm",
+        "password": "UQ3w2q98BItd3DPgyctdoJw4cqQFmY59ppiDQdqMKbw=",
+        "clients": [
+          {
+            "password": "gv5gp9oyQmPB4mWnq+6LICXYfnFHyRUbCfcPIHb+PQY="
+#shadowsocks2022-grpc
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "shadowsocks2022-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "20006",
+      "protocol": "socks",
+      "settings": {
+        "auth": "password",
+        "accounts": [
+            {
+              "user": "private",
+              "pass": "server"
+#socks-grpc
+            }
+          ],
+        "udp": true,
+        "ip": "127.0.0.1"
+      },
+      "streamSettings":{
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "socks5-grpc",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      }
+    }
   ],
   "outbounds": [
     {
