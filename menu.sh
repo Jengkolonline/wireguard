@@ -129,12 +129,13 @@ echo -e "\E[0;100;33m                • MENU TAMBAHAN •                \E[0m"
 echo -e "\033[33m└───────────────────────────────────────────────┘${NC}"
 echo -e " [\e[36m•7\e[0m] L2TP Menu          [\e[36m•10\e[0m] SHADOWSOKS R Menu"
 echo -e " [\e[36m•8\e[0m] PPTP Menu          [\e[36m•11\e[0m] SHADOWSOKS-Libev Menu"
-echo -e " [\e[36m•9\e[0m] SSTP Menu          [\e[36m•12\e[0m] BOT Menu"
+echo -e " [\e[36m•9\e[0m] SSTP Menu          [\e[36m•12\e[0m] WIREGUARD Menu"
 echo -e "\033[33m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\E[0;100;33m                • MENU SETTING •                 \E[0m"
 echo -e "\033[33m└───────────────────────────────────────────────┘${NC}"
 echo -e " [\e[36m•13\e[0m] Install UDP       [\e[36m•15\e[0m] Status Running"
 echo -e " [\e[36m•14\e[0m] SYSTEM Menu       [\e[36m•16\e[0m] Clear RAM Cache"
+echo -e " [\e[36m•17\e[0m] BOT Menu"
 echo -e "\033[33m┌───────────────────────────────────────────────┐${NC}"
 echo -e "\E[0;100;33m                • MASA AKTIF •                   \E[0m"
 echo -e "\033[33m└───────────────────────────────────────────────┘${NC}"
@@ -160,10 +161,11 @@ case $opt in
 9) clear ; menu-sstp ;;
 10) clear ; menu-ssr ;;
 11) clear ; menu-ssl ;;
-12) clear ; menu-bot ;;
+12) clear ; menu-wg ;;
 13) clear ; wget --load-cookies /tmp/cookies.txt ${UDPCORE} -O install-udp && rm -rf /tmp/cookies.txt && chmod +x install-udp && ./install-udp ;;
 14) clear ; menu-set ;;
 15) clear ; running ;;
 16) clear ; clearcache ;;
+17) clear ; menu-bot ;;
 x) exit ;;
 esac
