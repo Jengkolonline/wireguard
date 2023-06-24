@@ -40,8 +40,8 @@ echo -e "\E[0;100;33m       • Wireguard Install •         \E[0m"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
 echo -e " [\e[36m•4\e[0m] Install wireguard "
-echo -e " [\e[36m•5\e[0m] Stop wireguard "
-echo -e " [\e[36m•5\e[0m] Start wireguard "
+#echo -e " [\e[36m•5\e[0m] Stop wireguard "
+#echo -e " [\e[36m•5\e[0m] Start wireguard "
 echo -e ""
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e ""
@@ -57,9 +57,9 @@ case $opt in
 1) clear ; addwg ; exit ;;
 2) clear ; renewwg ; exit ;;
 3) clear ; delwg ; exit ;;
-4) wget https://raw.githubusercontent.com/Jengkolonline/wireguard/main/wg.sh && chmod +x wg.sh && ./wg.sh ; exit ;;
-5) systemctl stop wg-quick@wg0.service ; exit ;;
-6) systemctl start wg-quick@wg0.service ; exit ;;
+4) clear ; wget https://raw.githubusercontent.com/Jengkolonline/wireguard/main/wg.sh && chmod +x wg.sh && ./wg.sh ; exit ;;
+#5) clear ; systemctl stop wg-quick@wg0.service ; exit ;;
+#6) clear ; systemctl start wg-quick@wg0.service ; exit ;;
 0) clear ; menu ; exit ;;
 x) exit ;;
 *) echo "Anda salah tekan " ; sleep 1 ; menu-ssh ;;
